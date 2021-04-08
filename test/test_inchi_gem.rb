@@ -7,8 +7,8 @@ class InChIGemTest < Test::Unit::TestCase
   def test_sample01
     sample_01 = File.read('./test/data/sample_01.mol')
 
-    rv = Inchi::ExtraInchiReturnValues.new;
-    inchi = Inchi::molfileToInchi(sample_01, rv);
+    rv = Inchi::ExtraInchiReturnValues.new
+    inchi = Inchi::molfileToInchi(sample_01, rv)
 
     correct_inchi = "InChI=1S/C5H8O/c1-2-4-6-5-3-1/h1-2H,3-5H2"
 
@@ -46,14 +46,17 @@ class InChIGemTest < Test::Unit::TestCase
   def test_polymer01
     sample_01 = File.read('./test/data/polystyrene.mol')
 
-    rv = Inchi::ExtraInchiReturnValues.new;
+    rv = Inchi::ExtraInchiReturnValues.new
 
-    inchi06 = Inchi::molfileToInchi(sample_01, rv, "-Polymers");
+    inchi06 = Inchi::molfileToInchi(sample_01, rv, "-Polymers")
     correct_inchi06 = "InChI=1B/C8H8Zz2/c9-6-8(10)7-4-2-1-3-5-7/h1-5,8H,6H2/z101-1-8(10-8,9-6)"
     assert_equal(inchi06, correct_inchi06)
 
-    inchi05 = Inchi::molfileToInchi(sample_01, rv, "-Polymers105");
+    inchi05 = Inchi::molfileToInchi(sample_01, rv, "-Polymers105")
     correct_inchi05 = "InChI=1B/C8H8/c1-2-8-6-4-3-5-7-8/h2-7H,1H2/z101-1-8(1.2)"
+
+    inchi = Inchi::molfileToInchi(sample_01, rv, "-Polymers -FoldCRU -NPZz -SAtZZ -LargeMolecules")
+    correct_inchi = "InChI=1B/C8H8/c1-2-8-6-4-3-5-7-8/h2-7H,1H2/z101-1-8(1.2)"
     assert_equal(inchi05, correct_inchi05)
   end
 end
