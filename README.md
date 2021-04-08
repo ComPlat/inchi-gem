@@ -22,6 +22,34 @@ inchi05 = Inchi::molfileToInchi(molfile, rv, "-Polymers105");
 
 ```
 
+### List options:
+- `LooseTSACheck` (new in v. 1.06)
+    Relax strictness of tetrahedral stereo ambiguity check for stereo atoms
+    in (large) rings
+    Default: Use strict criteria (as in v. 1.05 and previous)
+- `Polymers`
+    Experimental support of simple polymers, current mode
+    Default: Disabled
+- `Polymers105` (new in v. 1.06)
+    Experimental support of simple polymers in legacy v. 1.05 mode
+    Default: Disabled
+- `NoFrameShift` (new in v. 1.06)
+    Disable polymer CRU frame shift
+    Default: Attempt CRU frame shift
+- `FoldCRU` (new in v. 1.06)
+    In polymer treatment, try to fold constitutional repeating units
+      which themselves contain repeats
+    Default: Disabled
+- `NPZz` (new in v. 1.06)
+    Allow non-polymer Zz pseudo element atoms
+    Default: Disabled
+- `SAtZZ` (new in v. 1.06)
+    Allow stereo at atoms connected to Zz
+    Default: Disabled
+- `LargeMolecules`
+    Experimental support of molecules up to 32767 atoms
+    Default: Disabled
+
 ## Test
 
 ```
