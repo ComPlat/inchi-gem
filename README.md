@@ -53,6 +53,41 @@ inchi = Inchi::molfileToInchi(sample_01, rv, "-Polymers -FoldCRU -NPZz -SAtZZ -L
     Experimental support of molecules up to 32767 atoms.
     Default: Disabled.
 
+### Return value
+
+Return information is saved in the `ExtraInchiReturnValues` struct param
+
+```
+struct ExtraInchiReturnValues {
+  int returnCode; // return code, see the table below
+  std::string messagePtr;
+  std::string logPtr;
+  std::string auxInfoPtr;
+};
+```
+
+Example of warning inchi
+
+```
+require 'inchi-gem'
+
+rv = Inchi::ExtraInchiReturnValues.new
+inchi = Inchi::molfileToInchi(molfile, rv, "-Polymers")
+puts rv.returnCode // 1
+puts rv.messagePtr // "Accepted unusual valence(s): N(4); Metal was disconnected; Proton(s) added/removed"
+```
+
+| Code              | Value | Meaning  |
+| ----------------- |:-----:| ------------------------------------------------------------------------------:|
+| inchi_Ret_OKAY    | 0     | Success; no errors or warnings                                                 |
+| inchi_Ret_WARNING | 1     | Success; warning(s) issued                                                     |
+| inchi_Ret_ERROR   | 2     | Error: no InChI has been created                                               |
+| inchi_Ret_FATAL   | 3     | Severe error: no InChI has been created (typically, memory allocation failure) |
+| inchi_Ret_UNKNOWN | 4     | Unknown program error                                                          |
+| inchi_Ret_BUSY    | 5     | Previous call to InChI has not returned yet                                    |
+| inchi_Ret_EOF     | -1    | No structural data have been provided                                          |
+| inchi_Ret_SKIP    | -2    | Not used in InChI library                                                      |
+
 ## Test
 
 ```
