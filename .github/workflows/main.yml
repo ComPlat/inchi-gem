@@ -1,0 +1,36 @@
+name: Ruby
+
+on:
+  push:
+    branches: 
+      - main
+
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Ruby ${{ matrix.ruby }}
+    strategy:
+      matrix:
+        ruby:
+          - '2.7.8'
+          - '3.3.8'
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - name: bundle
+      run: bundle install
+    - name: compile
+      run: | 
+        cd ext/inchi-gem/
+        ruby extconf.rb && make
+    - name: test
+      run: bundle exec rake
