@@ -1,0 +1,13 @@
+*.gem
+.bundle
+Gemfile.lock
+pkg/*
+
+# ignore build artifacts
+ext/inchi-gem/Makefile
+ext/inchi-gem/inchi/
+ext/inchi-gem/inchi.o
+ext/inchi-gem/inchi_wrap.*
+
+
+.tool-versions
