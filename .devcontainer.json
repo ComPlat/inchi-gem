@@ -1,0 +1,24 @@
+{
+    "name": "inchi-gem",
+    "image": "ruby:3.3.10",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "configureZshAsDefaultShell": true,
+            "installOhMyZsh": true,
+            "installOhMyZshConfig": true,
+            "upgradePackages": true,
+            "username": "automatic",
+            "userUid": "automatic",
+            "userGid": "automatic"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "eamodio.gitlens"
+            ]
+        }
+    },
+    "postCreateCommand": "apt-get update && apt-get install cmake -y"
+}
