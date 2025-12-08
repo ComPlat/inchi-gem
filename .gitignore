@@ -4,10 +4,9 @@ Gemfile.lock
 pkg/*
 
 # ignore build artifacts
-ext/inchi-gem/Makefile
-ext/inchi-gem/inchi/
-ext/inchi-gem/inchi.o
-ext/inchi-gem/inchi_wrap.*
+ext/inchi-gem/*
 
+!ext/inchi-gem/extconf.rb
+!ext/inchi-gem/inchi.c
 
 .tool-versions
