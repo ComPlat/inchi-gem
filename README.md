@@ -1,5 +1,5 @@
 # inchi-gem
-Ruby wrapper for [InChI](https://www.inchi-trust.org/downloads/) v1.06
+Ruby wrapper for [InChI]((https://github.com/IUPAC-InChI/InChI)/) v1.07.4
 
 ## Install
 
